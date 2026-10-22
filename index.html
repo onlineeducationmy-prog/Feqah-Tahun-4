@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Pintar Feqah Tahun 4</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
+
+    <!-- Header / Navbar -->
+    <header class="bg-emerald-800 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div class="flex items-center space-x-3 rtl:space-x-reverse">
+                <div class="bg-white/10 p-2.5 rounded-xl border border-white/20 flex items-center justify-center">
+                    <!-- Graduation cap icon -->
+                    <svg class="w-8 h-8 text-emerald-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0v6"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl sm:text-2xl font-bold tracking-tight">E-Pintar Feqah Tahun 4</h1>
+                    <p class="text-xs sm:text-sm text-emerald-200 font-medium">Panduan Ulang Kaji & Kuiz Silibus JAIS</p>
+                </div>
+            </div>
+            
+            <!-- Logo badge -->
+            <div class="bg-emerald-900/80 border border-emerald-700/50 px-3 py-1.5 rounded-lg flex items-center space-x-2 rtl:space-x-reverse shadow-sm">
+                <svg class="w-4 h-4 text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                <span class="text-xs font-semibold text-emerald-100">online.education1.my</span>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="bg-emerald-900/60 border-t border-emerald-700/40">
+            <div class="max-w-4xl mx-auto px-4 flex overflow-x-auto space-x-2 rtl:space-x-reverse py-2">
+                <button onclick="switchTab('nota')" id="tab-btn-nota" class="tab-btn flex items-center space-x-2 rtl:space-x-reverse px-4 py-2 rounded-lg text-sm font-semibold transition-all bg-emerald-700 text-white shadow">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                    <span>Nota Ringkas</span>
+                </button>
+                <button onclick="switchTab('kad')" id="tab-btn-kad" class="tab-btn flex items-center space-x-2 rtl:space-x-reverse px-4 py-2 rounded-lg text-sm font-semibold transition-all text-emerald-200 hover:bg-emerald-800/60 hover:text-white">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                    <span>Kad Imbasan</span>
+                </button>
+                <button onclick="switchTab('kuiz')" id="tab-btn-kuiz" class="tab-btn flex items-center space-x-2 rtl:space-x-reverse px-4 py-2 rounded-lg text-sm font-semibold transition-all text-emerald-200 hover:bg-emerald-800/60 hover:text-white">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012-2m-6 9l2 2 4-4"/></svg>
+                    <span>Ujian Kuiz</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-4xl mx-auto px-4 py-6 flex-1 w-full">
+
+        <!-- TAB 1: NOTA RINGKAS -->
+        <div id="tab-nota" class="tab-content space-y-6">
+            <!-- Intro Card -->
+            <div class="bg-gradient-to-r from-emerald-800 to-emerald-700 text-white p-6 rounded-2xl shadow-md">
+                <span class="bg-emerald-900/80 text-emerald-200 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Mod Pembelajaran</span>
+                <h2 class="text-2xl font-bold mt-2">Koleksi Nota Poket Feqah</h2>
+                <p class="text-emerald-100 text-sm mt-1">Nota ringkas tersusun berpandukan silibus rasmi SRA/KAFA JAIS Tahun 4 (Pelajaran 1 hingga 4).</p>
+            </div>
+
+            <!-- Accordion List for Pelajaran 1 to 4 -->
+            <div class="space-y-4" id="nota-accordion-container">
+                <!-- Dynamically filled by JS -->
+            </div>
+        </div>
+
+        <!-- TAB 2: KAD IMBASAN -->
+        <div id="tab-kad" class="tab-content hidden space-y-6">
+            <!-- Intro Card -->
+            <div class="bg-gradient-to-r from-emerald-800 to-emerald-700 text-white p-6 rounded-2xl shadow-md">
+                <span class="bg-emerald-900/80 text-emerald-200 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Kad Imbasan Interaktif (40 Soalan)</span>
+                <h2 class="text-2xl font-bold mt-2">Latihan Hafalan & Pemahaman</h2>
+                <p class="text-emerald-100 text-sm mt-1">Sediakan 10 kad imbasan khas untuk setiap pelajaran. Tekan kad untuk melihat jawapan di sebelah belakang!</p>
+            </div>
+
+            <!-- Pelajaran Selector for Flashcards -->
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <label for="flashcard-lesson-select" class="font-semibold text-gray-700 text-sm">Pilih Pelajaran:</label>
+                <select id="flashcard-lesson-select" onchange="changeFlashcardLesson(this.value)" class="w-full sm:w-auto bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-xl focus:ring-emerald-500 focus:border-emerald-500 p-2.5 font-medium">
+                    <option value="0">Pelajaran 1: Solat Jumaat (10 Kad)</option>
+                    <option value="1">Pelajaran 2: الخطبة Jumaat (10 Kad)</option>
+                    <option value="2">Pelajaran 3: Solat-Solat Sunat (10 Kad)</option>
+                    <option value="3">Pelajaran 4: Solat Jamak dan Qasar (10 Kad)</option>
+                </select>
+            </div>
+
+            <!-- Flashcard Card View -->
+            <div class="flex flex-col items-center space-y-4">
+                <div class="w-full flex justify-between items-center text-sm font-medium text-emerald-800 px-2">
+                    <span id="flashcard-counter" class="bg-emerald-100 px-3 py-1 rounded-full text-emerald-800">Kad 1 daripada 10</span>
+                    <span class="text-gray-500 text-xs flex items-center space-x-1">
+                        <svg class="w-4 h-4 inline mr-1 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"/></svg>
+                        Tekan kad untuk lihat jawapan
+                    </span>
+                </div>
+
+                <!-- Interactive Flashcard Box -->
+                <div id="flashcard-box" onclick="flipFlashcard()" class="w-full bg-gradient-to-br from-emerald-800 to-emerald-900 text-white rounded-3xl p-8 sm:p-12 shadow-xl cursor-pointer min-h-[280px] flex flex-col justify-between transition-transform duration-300 hover:scale-[1.01] relative overflow-hidden">
+                    <div class="absolute top-4 right-4 bg-white/10 px-3 py-1 rounded-full text-xs text-emerald-200 uppercase tracking-widest font-semibold" id="flashcard-side-label">Soalan</div>
+                    <div class="my-auto text-center py-6">
+                        <p id="flashcard-text" class="text-lg sm:text-2xl font-medium leading-relaxed"></p>
+                    </div>
+                    <div class="text-center text-xs text-emerald-300 font-medium">
+                        Klik / Ketuk di mana-mana untuk pusing kad
+                    </div>
+                </div>
+
+                <!-- Flashcard Controls -->
+                <div class="flex items-center justify-between w-full pt-2">
+                    <button onclick="prevFlashcard()" class="bg-white border border-gray-200 hover:bg-gray-100 text-gray-700 font-semibold px-5 py-2.5 rounded-xl shadow-sm transition flex items-center space-x-2">
+                        <span>Kad Sebelumnya</span>
+                    </button>
+                    <button onclick="resetFlashcards()" class="bg-emerald-100 hover:bg-emerald-200 text-emerald-800 font-semibold px-4 py-2.5 rounded-xl transition text-sm">
+                        Ulang Semula
+                    </button>
+                    <button onclick="nextFlashcard()" class="bg-emerald-700 hover:bg-emerald-800 text-white font-semibold px-5 py-2.5 rounded-xl shadow transition flex items-center space-x-2">
+                        <span>Kad Seterusnya</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 3: UJIAN KUIZ -->
+        <div id="tab-kuiz" class="tab-content hidden space-y-6">
+            <!-- Quiz Selection View -->
+            <div id="quiz-menu-view" class="space-y-6">
+                <!-- Header Card -->
+                <div class="bg-gradient-to-r from-emerald-800 to-emerald-700 text-white p-6 rounded-2xl shadow-md text-center sm:text-right">
+                    <h2 class="text-2xl font-bold">Kuasai Feqah Sekolah Rendah Agama (SRA / KAFA)</h2>
+                    <p class="text-emerald-100 text-sm mt-1">Pilih tajuk kuiz di bawah untuk memulakan kuiz interaktif beserta maklum balas huraian fakta.</p>
+                </div>
+
+                <!-- Selection Card -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
+                    <h3 class="font-bold text-gray-800 flex items-center space-x-2 rtl:space-x-reverse text-base">
+                        <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+                        <span>SILA PILIH TAJUK PELAJARAN:</span>
+                    </h3>
+
+                    <div class="grid grid-cols-1 gap-3" id="quiz-options-list">
+                        <!-- Filled by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Active Quiz View -->
+            <div id="quiz-active-view" class="hidden space-y-6">
+                <!-- Quiz Status Bar -->
+                <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-wrap items-center justify-between gap-4">
+                    <div>
+                        <span id="quiz-active-title" class="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full">Pelajaran</span>
+                        <h3 id="quiz-progress-text" class="text-lg font-bold text-gray-800 mt-1">Soalan 1 daripada 30</h3>
+                    </div>
+                    <div class="flex items-center space-x-3 rtl:space-x-reverse">
+                        <div class="bg-emerald-50 px-4 py-2 rounded-xl border border-emerald-100 text-center">
+                            <span class="block text-xs text-gray-500 font-medium">Skor Semasa</span>
+                            <span id="quiz-current-score" class="text-lg font-bold text-emerald-700">0</span>
+                        </div>
+                        <button onclick="exitQuiz()" class="text-gray-400 hover:text-gray-600 p-2 rounded-lg hover:bg-gray-100 transition" title="Keluar Kuiz">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question Box -->
+                <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-gray-100 space-y-6">
+                    <h4 id="question-text" class="text-lg sm:text-xl font-bold text-gray-900 leading-snug"></h4>
+
+                    <!-- Options List -->
+                    <div id="options-container" class="space-y-3">
+                        <!-- Filled by JS -->
+                    </div>
+
+                    <!-- Huraian Fakta Box (Immediate Feedback Explanation) -->
+                    <div id="explanation-box" class="hidden bg-emerald-50 border border-emerald-200 rounded-xl p-4 text-emerald-900 space-y-2 mt-4">
+                        <div class="flex items-center space-x-2 rtl:space-x-reverse font-bold text-emerald-800">
+                            <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            <span>Huraian Fakta:</span>
+                        </div>
+                        <p id="explanation-text" class="text-sm leading-relaxed text-emerald-800/90"></p>
+                    </div>
+                </div>
+
+                <!-- Navigation Controls -->
+                <div class="flex items-center justify-between pt-2">
+                    <button onclick="prevQuestion()" id="btn-prev-q" class="bg-white border border-gray-200 hover:bg-gray-100 text-gray-700 font-semibold px-5 py-2.5 rounded-xl shadow-sm transition">
+                        Soalan Sebelumnya
+                    </button>
+                    <button onclick="nextQuestion()" id="btn-next-q" class="bg-emerald-700 hover:bg-emerald-800 text-white font-semibold px-6 py-2.5 rounded-xl shadow transition">
+                        Soalan Seterusnya
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quiz Result View -->
+            <div id="quiz-result-view" class="hidden space-y-6">
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center space-y-6">
+                    <div class="w-20 h-20 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center mx-auto shadow-inner">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full">Keputusan Ujian Kuiz</span>
+                        <h3 class="text-3xl font-extrabold text-gray-900 mt-2">Tahniah! Kuiz Selesai</h3>
+                    </div>
+
+                    <!-- Score Card Grid -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-lg mx-auto pt-2">
+                        <div class="bg-gray-50 p-4 rounded-2xl border border-gray-100">
+                            <span class="block text-xs text-gray-500 font-medium">Markah</span>
+                            <span id="result-score" class="text-2xl font-bold text-emerald-700">0/30</span>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-2xl border border-gray-100">
+                            <span class="block text-xs text-gray-500 font-medium">Peratusan</span>
+                            <span id="result-percentage" class="text-2xl font-bold text-emerald-700">0%</span>
+                        </div>
+                        <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-100">
+                            <span class="block text-xs text-emerald-700 font-medium">Betul</span>
+                            <span id="result-correct" class="text-2xl font-bold text-emerald-600">0</span>
+                        </div>
+                        <div class="bg-rose-50 p-4 rounded-2xl border border-rose-100">
+                            <span class="block text-xs text-rose-700 font-medium">Salah</span>
+                            <span id="result-wrong" class="text-2xl font-bold text-rose-600">0</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 flex flex-col sm:flex-row justify-center gap-3">
+                        <button onclick="restartQuiz()" class="bg-emerald-700 hover:bg-emerald-800 text-white font-semibold px-6 py-3 rounded-xl shadow transition">
+                            Cuba Lagi (Ulang Kuiz)
+                        </button>
+                        <button onclick="exitQuiz()" class="bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold px-6 py-3 rounded-xl transition">
+                            Pilih Tajuk Lain
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 text-center py-4 text-xs text-gray-500 mt-12">
+        <p>E-Pintar Feqah Tahun 4 SRA/KAFA JAIS • Berpandukan Buku Teks Rasmi</p>
+    </footer>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // --- DATA SILIBUS JAIS TAHUN 4 (Pelajaran 1 hingga 4) ---
+        const pelajaranNota = [
+            {
+                id: 1,
+                title: "Pelajaran 1: Solat Jumaat",
+                penerangan: "Solat Jumaat ialah solat dua rakaat yang dilakukan pada waktu Zohor hari Jumaat secara berjemaah didahului dengan dua khutbah.",
+                fakta: [
+                    "Dalil Nakli (Al-Quran): Surah Al-Jumaah ayat 9 tentang panggilan segera menunaikan solat Jumaat apabila seruan azan dilaungkan.",
+                    "Hadis: Riwayat Abu Daud & Al-Hakim - Solat Jumaat adalah hak yang wajib ditunaikan oleh setiap Muslim lelaki secara berjemaah.",
+                    "Syarat Wajib Solat Jumaat (6): Islam, Baligh, Berakal, Merdeka, Lelaki, Bermastautin / Mukim, dan Sihat.",
+                    "Syarat Sah Solat Jumaat (4): Didirikan pada waktu Zohor, didirikan dalam suatu tempat (masjid/dewan), didirikan secara berjemaah sekurang-kurangnya 40 orang lelaki yang sah syarat wajib, dan mendahului dengan dua khutbah.",
+                    "Sunat Jumaat (8): Mandi sunat, membersihkan diri & memotong kuku, memakai wangi-wangian, datang awal ke masjid, masuk kaki kanan sambil membaca doa, solat sunat tahiyyatul masjid, niat iktikaf, dan berzikir/membaca Al-Quran.",
+                    "Hukum Solat Jumaat: Fardhu Ain bagi lelaki memenuhi syarat.",
+                    "Hikmah: Mentaati perintah Allah, memperkukuhkan perpaduan ummah, melatih disiplin, mendapat pengajaran dari khutbah."
+                ]
+            },
+            {
+                id: 2,
+                title: "Pelajaran 2: Khutbah Jumaat",
+                penerangan: "Khutbah Jumaat ialah ucapan yang mengandungi nasihat dan pengajaran yang dibaca sebelum solat Jumaat.",
+                fakta: [
+                    "Hukum Mendengar Khutbah: Wajib bagi jemaah yang mendengar.",
+                    "Syarat Sah Khutbah (5): Disampaikan oleh lelaki, berdiri jika mampu, duduk di antara dua khutbah, disampaikan dalam waktu Zohor, didengar sekurang-kurangnya 40 orang jemaah lelaki wajib Jumaat, menutup aurat, suci dari hadas & najis.",
+                    "Rukun Khutbah (5 - pada khutbah pertama dan kedua): Memuji Allah (الحمد لله), Selawat ke atas Nabi SAW (اللهم صل على محمد), Berpesan takwa kepada Allah, Membaca satu ayat Al-Quran, dan Berdoa pada khutbah kedua.",
+                    "Perkara Sunat Ketika Berkhutbah: Khutbah di atas minbar/tempat tinggi, fasih dan terang, menghadap ke arah jemaah, memberi salam sebelum berkhutbah, duduk tenang selepas salam, tertib.",
+                    "Hikmah Khutbah: Mendapat kefahaman syariat, menambah ketakwaan, mendapat nasihat dan pengajaran semasa."
+                ]
+            },
+            {
+                id: 3,
+                title: "Pelajaran 3: Solat-Solat Sunat",
+                penerangan: "Mempelajari jenis-jenis solat sunat utama dalam Islam berserta hukum dan cara mengerjakannya.",
+                fakta: [
+                    "Solat Sunat Rawatib: Solat sunat yang mengiringi solat fardhu (Qabliyah & Ba'diyah). Hukumnya sunat muakad dan ghairu muakad.",
+                    "Solat Sunat Dhuha: Solat sunat 2 hingga 8 rakaat yang dilakukan pada waktu Dhuha (28 minit selepas terbit matahari hingga sebelum Zohor).",
+                    "Solat Sunat Hajat: Solat sunat 2 rakaat memohon kepada Allah agar dimakbulkan sesuatu hajat.",
+                    "Solat Sunat Tarawih: Solat sunat 20 rakaat yang dilakukan pada malam bulan Ramadan selepas solat Isyak secara berjemaah.",
+                    "Solat Sunat Tahajud: Solat sunat selepas bangun tidur malam (afdal sepertiga malam terakhir).",
+                    "Solat Sunat Tasbih: Solat 4 rakaat (siang) atau 2 rakaat (malam) dengan bacaan tasbih sebanyak 300 kali keseluruhan.",
+                    "Solat Sunat Watar: Solat penutup malam (ganjil), minimum 1 rakaat.",
+                    "Solat Sunat Tahiyyatul Masjid: Solat 2 rakaat apabila memasuki masjid sebelum duduk untuk menghormati rumah Allah."
+                ]
+            },
+            {
+                id: 4,
+                title: "Pelajaran 4: Solat Jamak dan Qasar",
+                penerangan: "Solat Jamak ialah menghimpunkan dua solat fardhu dalam satu waktu. Solat Qasar ialah memendekkan solat 4 rakaat kepada 2 rakaat.",
+                fakta: [
+                    "Hukum: Harus bagi musafir yang memenuhi syarat musafir (lebih kurang 81 km / 2 marhalah).",
+                    "Solat yang boleh Jamak: Zohor dengan Asar, Maghrib dengan Isyak.",
+                    "Solat yang boleh Qasar: Zohor, Asar, dan Isyak (Maghrib tidak boleh diqasar).",
+                    "Bahagian Jamak: Jamak Taqdim (dilakukan pada waktu solat pertama) dan Jamak Takhir (dilakukan pada waktu solat kedua).",
+                    "Syarat Sah Solat Jamak & Qasar: Niat jamak/qasar pada tempatnya, musafir harus (bukan maksiat), jarak perjalanan >= 81 km, berturut-turut (muwalat), dan tertib."
+                ]
+            }
+        ];
+
+        // --- KAD IMBASAN (40 KAD: 10 KAD UNTUK SETIAP PELAJARAN) ---
+        const flashcardsData = [
+            // Pelajaran 1 (10 kad)
+            [
+                { q: "Apakah pengertian Solat Jumaat?", a: "Solat dua rakaat yang dilakukan pada waktu Zohor hari Jumaat secara berjemaah didahului dengan dua khutbah." },
+                { q: "Apakah hukum menunaikan Solat Jumaat?", a: "Fardhu Ain bagi setiap lelaki Islam yang memenuhi syarat." },
+                { q: "Nyatakan surah rujukan dalil Solat Jumaat.", a: "Surah Al-Jumaah, Ayat 9." },
+                { q: "Berapakah bilangan minimum jemaah syarat sah Solat Jumaat?", a: "Sekurang-kurangnya 40 orang lelaki yang sah syarat wajib solat Jumaat." },
+                { q: "Sebutkan 3 daripada 6 syarat wajib solat Jumaat.", a: "Islam, Baligh, Berakal, Merdeka, Lelaki, Bermastautin / Mukim." },
+                { q: "Apakah hukum meninggalkan solat Jumaat 3 kali berturut-turut tanpa uzur?", a: "Allah akan menutup pintu hatinya." },
+                { q: "Sebutkan 2 amalan sunat sebelum solat Jumaat.", a: "Mandi sunat Jumaat dan memakai wangi-wangian." },
+                { q: "Bila waktu dimulakan solat Jumaat?", a: "Pada waktu Zohor." },
+                { q: "Apakah hukum mandi sunat Jumaat?", a: "Sunat muakad bagi orang yang hendak menghadiri solat Jumaat." },
+                { q: "Sebutkan satu hikmah menunaikan solat Jumaat.", a: "Mentaati perintah Allah dan memperkukuhkan perpaduan ummah." }
+            ],
+            // Pelajaran 2 (10 kad)
+            [
+                { q: "Apakah pengertian Khutbah Jumaat?", a: "Ucapan yang mengandungi nasihat dan pengajaran yang dibaca sebelum solat Jumaat." },
+                { q: "Apakah hukum mendengar khutbah Jumaat?", a: "Wajib bagi jemaah yang hadir." },
+                { q: "Berapakah rukun khutbah Jumaat?", a: "5 rukun (puji Allah, selawat nabi, pesan takwa, baca ayat quran, doa khutbah kedua)." },
+                { q: "Apakah bahasa rasmi penyampaian rukun khutbah?", a: "Wajib disampaikan dalam Bahasa Arab." },
+                { q: "Sebutkan syarat sah khutbah berkaitan khatib.", a: "Khatib mestilah seorang lelaki, menutup aurat, dan suci daripada hadas serta najis." },
+                { q: "Apakah hukum khatib duduk di antara dua khutbah?", a: "Wajib / Syarat sah khutbah." },
+                { q: "Di manakah tempat afdal khatib berkhutbah?", a: "Di atas minbar atau tempat yang tinggi." },
+                { q: "Bolehkah bercakap-cakap semasa khatib sedang berkhutbah?", a: "Haram / Makruh tahrim, dan hilang pahala Jumaat." },
+                { q: "Kapan waktu doa yang paling mustajab semasa khutbah?", a: "Ketika khatib duduk di antara dua khutbah." },
+                { q: "Sebutkan hikmah khutbah Jumaat.", a: "Mendapat kefahaman terhadap syariat Islam dan nasihat berguna." }
+            ],
+            // Pelajaran 3 (10 kad)
+            [
+                { q: "Apakah pengertian Solat Sunat Rawatib?", a: "Solat sunat yang mengiringi solat fardhu (sebelum atau selepas)." },
+                { q: "Apakah hukum solat sunat Rawatib?", a: "Sunat (Muakad dan Ghairu Muakad)." },
+                { q: "Berapakah waktu afdal solat sunat Dhuha?", a: "28 minit selepas terbit matahari hingga sebelum Zohor." },
+                { q: "Apakah tujuan Solat Sunat Hajat?", a: "Solat yang dilakukan kerana memohon agar dimakbulkan sesuatu hajat." },
+                { q: "Berapakah jumlah rakaat solat sunat Tarawih di bulan Ramadan?", a: "20 rakaat (diikuti solat Witir)." },
+                { q: "Apakah waktu afdal Solat Sunat Tahajud?", a: "Sepertiga malam terakhir (selepas bangun tidur)." },
+                { q: "Berapakah jumlah bacaan tasbih dalam solat sunat Tasbih?", a: "300 kali tasbih keseluruhan." },
+                { q: "Apakah hukum solat sunat Tahiyyatul Masjid?", a: "Sunat dilakukan apabila masuk masjid sebelum duduk." },
+                { q: "Berapakah rakaat minimum solat sunat Witir?", a: "Sekurang-kurangnya 1 rakaat." },
+                { q: "Sebutkan hikmah solat sunat dalam Islam.", a: "Mendapat kasih sayang Allah, menambah pahala, dan menyempurnakan solat fardhu." }
+            ],
+            // Pelajaran 4 (10 kad)
+            [
+                { q: "Apakah pengertian Solat Jamak?", a: "Menghimpunkan dua solat fardhu dan dilakukan dalam satu waktu solat." },
+                { q: "Apakah pengertian Solat Qasar?", a: "Memendekkan solat fardhu 4 rakaat kepada 2 rakaat." },
+                { q: "Apakah hukum jamak dan qasar solat bagi musafir?", a: "Harus." },
+                { q: "Solat fardhu manakah yang boleh diqasar?", a: "Zohor, Asar, dan Isyak (4 rakaat sahaja)." },
+                { q: "Apakah syarat jarak perjalanan untuk musafir harus jamak/qasar?", a: "Tidak kurang 2 marhalah (lebih kurang 81 kilometer)." },
+                { q: "Apakah perbezaan Jamak Taqdim dan Jamak Takhir?", a: "Taqdim dibuat pada waktu pertama; Takhir dibuat pada waktu kedua." },
+                { q: "Bolehkah solat Subuh diqasar atau dijamak?", a: "Tidak boleh." },
+                { q: "Apakah syarat sah solat jamak dan qasar?", a: "Niat jamak/qasar, musafir harus, jarak mencukupi, berturut-turut (muwalat), dan tertib." },
+                { q: "Apakah hikmah disyariatkan Solat Jamak dan Qasar?", a: "Memberi kemudahan (rukhsah) kepada umat Islam ketika bermusafir." },
+                { q: "Adakah doktor yang bertugas panjang boleh menjamak solat?", a: "Ya, dengan memenuhi syarat tertentu darurat kerja menyelamat." }
+            ]
+        ];
+
+        // --- 30 SOALAN KUIZ UNTUK SETIAP PELAJARAN ---
+        const quizDataByLesson = {
+            1: [ // Pelajaran 1 (30 soalan)
+                { q: "Apakah pengertian Solat Jumaat?", options: ["Solat 2 rakaat hari Jumaat dengan khutbah", "Solat 4 rakaat Zohor", "Solat sunat hari raya", "Solat jenazah"], answer: 0, explanation: "Solat Jumaat ialah solat dua rakaat yang dilakukan pada waktu Zohor hari Jumaat secara berjemaah didahului dengan dua khutbah." },
+                { q: "Apakah hukum menunaikan Solat Jumaat bagi lelaki mukallaf?", options: ["Fardhu Kifayah", "Fardhu Ain", "Sunat Muakad", "Harus"], answer: 1, explanation: "Hukum solat Jumaat adalah Fardhu Ain ke atas setiap lelaki Islam yang memenuhi syarat." },
+                { q: "Di dalam surah manakah terdapat ayat berkaitan panggilan Solat Jumaat?", options: ["Surah Al-Baqarah", "Surah Al-Jumaah", "Surah Yasin", "Surah Al-Mulk"], answer: 1, explanation: "Rujukan dalil nakli Al-Quran ialah Surah Al-Jumaah ayat 9." },
+                { q: "Berapakah bilangan minimum jemaah bagi syarat sah solat Jumaat?", options: ["10 orang", "20 orang", "30 orang", "40 orang"], answer: 0, explanation: "Syarat sah solat Jumaat ialah didirikan dengan berjemaah sekurang-kurangnya 40 orang lelaki." },
+                { q: "Antara berikut, yang manakah BUKAN syarat wajib solat Jumaat?", options: ["Islam", "Perempuan", "Baligh", "Berakal"], answer: 1, explanation: "Perempuan tidak diwajibkan solat Jumaat; solat Jumaat wajib ke atas lelaki." },
+                { q: "Apakah hukum meninggalkan solat Jumaat tiga kali berturut-turut tanpa uzur?", options: ["Dosa besar / Allah tutup pintu hati", "Makruh sahaja", "Sah solatnya", "Tidak mengapa"], answer: 0, explanation: "Orang yang meninggalkan solat Jumaat 3 kali berturut-turut tanpa uzur, Allah akan menutup pintu hatinya." },
+                { q: "Bilakah waktu solat Jumaat didirikan?", options: ["Waktu Subuh", "Waktu Zohor", "Waktu Asar", "Waktu Isyak"], answer: 1, explanation: "Solat Jumaat dilakukan pada waktu Zohor menggantikan solat Zohor." },
+                { q: "Apakah hukum mandi sunat sebelum ke solat Jumaat?", options: ["Wajib", "Sunat", "Haram", "Makruh"], answer: 1, explanation: "Hukum mandi sebelum ke masjid pada hari Jumaat adalah sunat." },
+                { q: "Kaki manakah yang disunatkan melangkah masuk ke dalam masjid?", options: ["Kaki kiri", "Kaki kanan", "Mana-mana kaki", "Dua-dua kaki"], answer: 1, explanation: "Disunatkan masuk ke masjid dengan mendahulukan kaki kanan." },
+                { q: "Apakah nama solat sunat 2 rakaat apabila sampai di masjid?", options: ["Solat Sunat Rawatib", "Solat Sunat Tahiyyatul Masjid", "Solat Sunat Dhuha", "Solat Sunat Taubat"], answer: 1, explanation: "Solat Tahiyyatul Masjid ialah solat sunat 2 rakaat untuk menghormati masjid sebelum duduk." },
+                // 20 more questions for Pelajaran 1 to reach 30 complete questions...
+                { q: "Berapakah jumlah rakaat solat Jumaat?", options: ["2 rakaat", "3 rakaat", "4 rakaat", "1 rakaat"], answer: 0, explanation: "Solat Jumaat ditunaikan sebanyak 2 rakaat." },
+                { q: "Apakah kedudukan solat Jumaat berbanding solat Zohor?", options: ["Menggantikan solat Zohor", "Menambah solat Zohor", "Sunat selepas Zohor", "Tiada kaitan"], answer: 0, explanation: "Solat Jumaat menduduki tempat solat Zohor pada hari Jumaat." },
+                { q: "Antara berikut, yang manakah amalan sunat hari Jumaat?", options: ["Memotong kuku", "Memakai wangi-wangian", "Membaca Surah Al-Kahfi", "Semua di atas"], answer: 3, explanation: "Semua jawapan di atas adalah amalan sunat yang dianjurkan pada hari Jumaat." },
+                { q: "Adakah orang musafir diwajibkan solat Jumaat?", options: ["Wajib mutlak", "Tidak wajib jika memenuhi syarat musafir", "Sunat muakad", "Haram pergi"], answer: 1, explanation: "Musafir dengan jarak tertentu dimaafkan daripada kewajipan solat Jumaat." },
+                { q: "Apakah makna 'Mubasyir' dalam konteks solat Jumaat?", options: ["Menunaikan solat Jumaat", "Menjual beli", "Berniaga", "Tidur"], answer: 0, explanation: "Menunaikan kewajipan solat Jumaat pada waktunya." },
+                { q: "Siapakah yang menyusun buku teks Feqah Tahun 4 JAIS?", options: ["Jawatankuasa Buku Teks SRA Negeri Selangor", "KPM", "JAKIM", "JAWI"], answer: 0, explanation: "Buku teks diterbitkan oleh Jawatankuasa Buku Teks SRA Negeri Selangor (JAIS)." },
+                { q: "Apakah hukum merapatkan saf ketika mendengar khutbah Jumaat?", options: ["Sunat / Tuntutan", "Makruh", "Haram", "Harus"], answer: 0, explanation: "Disunatkan merapatkan saf dan senyap mendengar khutbah." },
+                { q: "Apakah erti 'Bermastautin' dalam syarat wajib Jumaat?", options: ["Menetap tetap di satu tempat", "Musafir jauh", "Pelancong", "Kanak-kanak"], answer: 0, explanation: "Bermastautin bermaksud menetap di kariah tersebut." },
+                { q: "Adakah kanak-kanak baligh wajib solat Jumaat?", options: ["Wajib setelah baligh", "Tidak wajib", "Sunat sahaja", "Makruh"], answer: 0, explanation: "Kanak-kanak yang belum baligh tidak wajib, tetapi wajib setelah baligh." },
+                { q: "Apakah hikmah solat Jumaat secara berjemaah?", options: ["Merapatkan kasih sayang umat Islam", "Menunjuk-nunjuk", "Menghbuang masa", "Tiada hikmah"], answer: 0, explanation: "Solat Jumaat menyatukan umat Islam setiap minggu." },
+                { q: "Berapa khutbah yang dibaca sebelum solat Jumaat?", options: ["Satu khutbah", "Dua khutbah", "Tiga khutbah", "Empat khutbah"], answer: 1, explanation: "Solat Jumaat didahului dengan dua khutbah berselang dengan duduk khatib." },
+                { q: "Apakah hukum menjawab azan ketika muazzin berazan?", options: ["Sunat menjawab", "Wajib bersuara kuat", "Haram", "Makruh"], answer: 0, explanation: "Disunatkan menjawab seruan azan." },
+                { q: "Adakah orang sakit berat wajib solat Jumaat?", options: ["Tidak wajib", "Wajib hadir juga", "Sunat", "Haram"], answer: 0, explanation: "Orang sakit diberi keuzuran tidak hadir solat Jumaat." },
+                { q: "Apakah rukun fizikal solat Jumaat?", options: ["Sama seperti solat fardhu biasa", "Berbeza sama sekali", "Hanya berdoa", "Tiada rukun"], answer: 0, explanation: "Rukun solat Jumaat 2 rakaat sama seperti solat fardhu Subuh/Zohor." },
+                { q: "Apakah bacaan ketika masuk masjid?", options: ["Doa masuk masjid dan selawat", "Doa tidur", "Doa makan", "Tiada doa"], answer: 0, explanation: "Membaca doa masuk masjid dengan mendahulukan kaki kanan." },
+                { q: "Adakah hamba abdi wajib solat Jumaat?", options: ["Tidak wajib (syarat merdeka)", "Wajib", "Sunat", "Makruh"], answer: 0, explanation: "Syarat wajib Jumaat ialah merdeka." },
+                { q: "Apakah akibat buruk melalaikan solat Jumaat?", options: ["Dimurkai Allah", "Mendapat puji", "Disayang kawan", "Biasa sahaja"], answer: 0, explanation: "Melalaikan solat fardhu mendatangkan kemurkaan Allah." },
+                { q: "Di manakah tempat solat Jumaat sah dilakukan?", options: ["Masjid atau balai raya yang diiktiraf", "Mana-mana tempat tanpa had", "Di atas pokok", "Dalam air"], answer: 0, explanation: "Diriwayatkan sah di masjid atau tempat berhimpun yang diizinkan." },
+                { q: "Apakah sifat utama jemaah ketika mendengar khutbah?", options: ["Tenang, diam dan mendengar", "Bercakap-cakap", "Tidur beramai-ramai", "Main telefon"], answer: 0, explanation: "Jemaah wajib senyap dan mendengar khutbah dengan teliti." },
+                { q: "Apakah kesimpulan Pelajaran 1 Feqah Tahun 4?", uid: 1, options: ["Solat Jumaat fardhu ain yang mulia", "Solat sunat biasa", "Amalan sunat harian", "Amalan tahunan"], answer: 0, explanation: "Solat Jumaat adalah syiar Islam yang besar bagi lelaki mukallaf." }
+            ],
+            2: [ // Pelajaran 2 (30 soalan)
+                { q: "Apakah pengertian Khutbah Jumaat?", options: ["Ucapan nasihat sebelum solat Jumaat", "Ceramah malam", "Kuliah subuh", "Syarahan umum"], answer: 0, explanation: "Khutbah Jumaat ialah ucapan yang mengandungi nasihat dan pengajaran yang dibaca sebelum solat Jumaat." },
+                { q: "Apakah hukum mendengar khutbah Jumaat bagi jemaah?", options: ["Wajib", "Sunat", "Harus", "Makruh"], answer: 0, explanation: "Hukum mendengar khutbah Jumaat adalah wajib bagi jemaah." },
+                { q: "Berapakah jumlah rukun khutbah Jumaat?", options: ["3 rukun", "4 rukun", "5 rukun", "6 rukun"], answer: 2, explanation: "Terdapat 5 rukun khutbah Jumaat yang wajib dipatuhi." },
+                { q: "Bahasa apakah yang wajib digunakan untuk membaca rukun khutbah?", options: ["Bahasa Melayu", "Bahasa Arab", "Bahasa Inggeris", "Bahasa Mandarin"], answer: 1, explanation: "Rukun khutbah wajib dibaca dalam Bahasa Arab." },
+                { q: "Apakah hukum khatib berdiri ketika berkhutbah?", options: ["Wajib / Syarat sah", "Sunat", "Harus", "Makruh"], answer: 0, explanation: "Khatib wajib berdiri jika mampu sebagai syarat sah khutbah." },
+                { q: "Berapa kali khatib perlu duduk di antara dua khutbah?", options: ["Sekali", "Dua kali", "Tiga kali", "Tidak perlu duduk"], answer: 0, explanation: "Khatib duduk sebentar di antara dua khutbah." },
+                { q: "Apakah hukum khatib menutup aurat ketika berkhutbah?", options: ["Wajib", "Sunat", "Harus", "Makruh"], answer: 0, explanation: "Khatib wajib menutup aurat dan suci dari hadas dan najis." },
+                { q: "Antara berikut, yang manakah rukun khutbah?", options: ["Membaca Alhamdulillah", "Selawat ke atas Nabi", "Berpesan dengan takwa", "Semua di atas"], answer: 3, explanation: "Semua di atas adalah sebahagian daripada 5 rukun khutbah." },
+                { q: "Apakah hukum bercakap semasa khatib sedang berkhutbah?", options: ["Haram / Sia-sia pahala", "Sunat", "Harus", "Makruh ringan"], answer: 0, explanation: "Bercakap semasa khutbah menjadikan pahala Jumaat sia-sia (lagha)." },
+                { q: "Di manakah tempat sunat khatib menyampaikan khutbah?", options: ["Di atas minbar", "Di lantai biasa", "Di luar pagar", "Di bilik air"], answer: 0, explanation: "Sunat khatib berkhutbah di atas minbar atau tempat yang tinggi." },
+                // 20 more questions for Pelajaran 2...
+                { q: "Apakah tajuk Pelajaran 2 Feqah Tahun 4 JAIS?", options: ["Khutbah Jumaat", "Solat Jumaat", "Solat Sunat", "Solat Jamak"], answer: 0, explanation: "Pelajaran 2 memfokuskan tajuk 'Khutbah Jumaat'." },
+                { q: "Adakah sah khutbah jika khatib tidak membaca selawat ke atas Nabi?", options: ["Tidak sah kerana selawat adalah rukun", "Sah", "Makruh", "Harus"], answer: 0, explanation: "Selawat ke atas Nabi SAW adalah salah satu rukun khutbah." },
+                { q: "Apakah rukun khutbah kelima?", options: ["Berdoa pada khutbah kedua", "Mandi", "Berdiri", "Melaungkan azan"], answer: 0, explanation: "Rukun terakhir ialah berdoa untuk orang mukmin pada khutbah kedua." },
+                { q: "Apakah bahasa yang boleh digunakan untuk bahagian selain rukun khutbah (seperti nasihat)?", options: ["Bahasa tempatan (Melayu/Inggeris dsb)", "Hanya Bahasa Arab", "Bahasa Isyarat", "Tidak boleh bercakap"], answer: 0, explanation: "Nasihat dan isi khutbah selain rukun boleh disampaikan dalam bahasa kefahaman jemaah." },
+                { q: "Berapakah jumlah minimum jemaah yang mendengar khutbah sebagai syarat sah?", options: ["40 orang lelaki", "10 orang", "2 orang", "100 orang"], answer: 0, explanation: "Sekurang-kurangnya 40 orang lelaki yang memenuhi syarat wajib solat Jumaat." },
+                { q: "Apakah sifat suara khatib yang disunatkan?", options: ["Terang, jelas dan fasih", "Perlahan dan berbisik", "Marah-marah", "Menjerit kuat"], answer: 0, explanation: "Sunat khatib menyampaikan khutbah dengan suara yang terang dan fasih." },
+                { q: "Apakah yang dimaksudkan dengan 'Muwalat' dalam khutbah?", options: ["Berturut-turut antara khutbah pertama dan kedua", "Berhenti lama", "Bersolat dulu", "Pulang rumah"], answer: 0, explanation: "Muwalat bermaksud berturut-turut tanpa selingan lama." },
+                { q: "Apakah hikmah disyariatkan khutbah Jumaat?", options: ["Menyampaikan maklumat agama dan isu semasa", "Bercerita kosong", "Menghiburkan jemaah", "Tiada faedah"], answer: 0, explanation: "Khutbah memberi panduan, nasihat dan kefahaman isu semasa kepada masyarakat." },
+                { q: "Adakah sah khutbah jika disampaikan oleh perempuan?", options: ["Tidak sah (khatib mesti lelaki)", "Sah", "Sunat", "Harus"], answer: 0, explanation: "Syarat sah khatib ialah seorang lelaki." },
+                { q: "Apakah yang sunat dipegang oleh khatib ketika berkhutbah?", options: ["Tongkat atau seumpamanya", "Buku cerita", "Telefon bimbit", "Makanan"], answer: 0, explanation: "Sunat khatib memegang tongkat ketika berkhutbah berpandukan sunnah." },
+                { q: "Adakah khatib perlu suci dari hadas kecil dan besar?", options: ["Ya, wajib suci", "Tidak perlu", "Sunat sahaja", "Harus berhadas"], answer: 0, explanation: "Khatib disyaratkan suci daripada hadas kecil dan besar." },
+                { q: "Apakah ayat Al-Quran yang wajib dibaca dalam khutbah?", options: ["Mana-mana ayat Al-Quran", "Surah Al-Fatihah penuh", "Ayat Kursi", "Surah Al-Ikhlas"], answer: 0, explanation: "Wajib membaca sekurang-kurangnya satu ayat Al-Quran yang sempurna kefahamannya dalam khutbah." },
+                { q: "Apakah hukum memberi salam sebelum khatib memulakan khutbah?", options: ["Sunat", "Wajib", "Haram", "Makruh"], answer: 0, explanation: "Sunat khatib memberi salam kepada jemaah apabila naik ke minbar." },
+                { q: "Bagaimanakah kedudukan khatib semasa menyampaikan khutbah?", options: ["Berdiri tegak", "Baring", "Duduk bersila", "Berjalan-jalan"], answer: 0, explanation: "Khatib berdiri tegak (jika mampu) ketika menyampaikan khutbah." },
+                { q: "Apakah maksud 'Al-Hamdulillah' dalam rukun khutbah?", options: ["Memuji Allah", "Memuji Nabi", "Memuji diri", "Memuji alam"], answer: 0, explanation: "Memuji Allah dengan lafaz Alhamdulillah adalah rukun pertama khutbah." },
+                { q: "Adakah sah solat Jumaat jika tiada khutbah?", options: ["Tidak sah tanpa dua khutbah", "Sah", "Makruh", "Harus"], answer: 0, explanation: "Khutbah adalah syarat sah solat Jumaat." },
+                { q: "Apakah peranan jemaah selepas mendengar khutbah?", options: ["Bersedia menunaikan solat Jumaat 2 rakaat", "Terus pulang", "Makan angin", "Tidur"], answer: 0, explanation: "Selepas khutbah selesai, muazzin akan iqamah untuk solat Jumaat." },
+                { q: "Adakah sah khutbah jika khatib bernajis pada pakaiannya?", options: ["Tidak sah (khatib wajib suci najis)", "Sah", "Makruh", "Harus"], answer: 0, explanation: "Khatib mesti suci badan, pakaian dan tempat daripada najis." },
+                { q: "Apakah erti 'Wasiat dengan takwa'?", options: ["Berpesan supaya takut kepada Allah", "Berpesan supaya kaya", "Berpesan supaya tidur", "Berpesan berniaga"], answer: 0, explanation: "Berpesan dengan takwa adalah rukun penting dalam khutbah." },
+                { q: "Apakah rumusan Pelajaran 2 Khutbah Jumaat?", options: ["Khutbah adalah rukun penting sebelum solat Jumaat", "Khutbah tidak penting", "Ceramah biasa", "Aktiviti kokurikulum"], answer: 0, explanation: "Khutbah Jumaat melengkapkan ibadah solat Jumaat dengan ilmu dan tarbiah." }
+            ],
+            3: [ // Pelajaran 3 (30 soalan)
+                { q: "Apakah pengertian Solat Sunat Rawatib?", options: ["Solat sunat mengiringi solat fardhu", "Solat jenazah", "Solat hari raya", "Solat gerhana"], answer: 0, explanation: "Solat sunat Rawatib ialah solat sunat yang mengiringi solat fardhu (sebelum atau selepas)." },
+                { q: "Apakah hukum solat sunat Rawatib?", options: ["Sunat", "Wajib", "Haram", "Makruh"], answer: 0, explanation: "Hukum solat sunat Rawatib adalah sunat (terbahagi kepada muakad dan ghairu muakad)." },
+                { q: "Bilakah waktu Solat Sunat Dhuha dilakukan?", options: ["Selepas terbit matahari hingga sebelum Zohor", "Tengah malam", "Waktu Maghrib", "Waktu Asar"], answer: 0, explanation: "Waktu Dhuha bermula 28 minit selepas terbit matahari sehingga sebelum gelincir matahari (Zohor)." },
+                { q: "Berapakah rakaat minimum bagi Solat Sunat Dhuha?", options: ["2 rakaat", "4 rakaat", "6 rakaat", "8 rakaat"], answer: 0, explanation: "Solat Dhuha dilakukan sekurang-kurangnya 2 rakaat dan maksimum 8 rakaat." },
+                { q: "Apakah tujuan Solat Sunat Hajat?", options: ["Memohon dimakbulkan hajat", "Menghilang lapar", "Tidur lena", "Bersukan"], answer: 0, explanation: "Solat sunat Hajat dilakukan ketika memohon sesuatu hajat daripada Allah SWT." },
+                { q: "Berapakah jumlah rakaat solat sunat Tarawih di bulan Ramadan?", options: ["20 rakaat", "2 rakaat", "4 rakaat", "36 rakaat"], answer: 0, explanation: "Menurut pandangan mazhab Syafie di SRA/KAFA JAIS, solat Tarawih ialah 20 rakaat." },
+                { q: "Apakah hukum solat sunat Tarawih?", options: ["Sunat Muakad", "Wajib", "Haram", "Makruh"], answer: 0, explanation: "Hukum solat Tarawih adalah sunat muakad (sangat dituntut) pada malam Ramadan." },
+                { q: "Apakah maksud Solat Sunat Tahajud?", options: ["Solat sunat malam selepas bangun tidur", "Solat siang hari", "Solat sebelum tidur", "Solat petang"], answer: 0, explanation: "Solat Tahajud ialah solat sunat yang dikerjakan pada waktu malam selepas bangun daripada tidur." },
+                { q: "Berapakah jumlah bacaan tasbih dalam solat sunat Tasbih keseluruhan?", options: ["300 kali", "100 kali", "50 kali", "1000 kali"], answer: 0, explanation: "Solat Tasbih mengandungi 300 kali bacaan tasbih diagihkan pada setiap rakaat." },
+                { q: "Apakah nama solat sunat penutup malam yang bilangan rakaatnya ganjil?", options: ["Solat Sunat Witir", "Solat Sunat Dhuha", "Solat Sunat Rawatib", "Solat Sunat Mutlak"], answer: 0, explanation: "Solat Witir ialah solat sunat penutup malam dengan bilangan rakaat ganjil." },
+                // 20 more questions for Pelajaran 3...
+                { q: "Apakah maksud Rawatib 'Qabliyah'?", options: ["Solat sunat sebelum solat fardhu", "Solat sunat selepas solat fardhu", "Solat malam", "Solat raya"], answer: 0, explanation: "Qabliyah bermaksud solat sunat yang dilakukan sebelum solat fardhu." },
+                { q: "Apakah maksud Rawatib 'Ba'diyah'?", options: ["Solat sunat selepas solat fardhu", "Solat sunat sebelum solat fardhu", "Solat subuh", "Solat jumaat"], answer: 0, explanation: "Ba'diyah bermaksud solat sunat yang dilakukan selepas solat fardhu." },
+                { q: "Antara berikut, yang manakah solat sunat Muakad?", options: ["Rawatib Qabliyah Subuh", "Rawatib Ba'diyah Asar", "Sunat Mutlak", "Sunat Isyraq"], answer: 0, explanation: "Qabliyah Subuh dan Ba'diyah Maghrib/Isyak adalah contoh sunat muakad." },
+                { q: "Apakah doa yang disunatkan dibaca selepas solat Dhuha?", options: ["Allahumma inna dhuha-a dhuha-uk...", "Doa makan", "Doa tidur", "Doa keluar tandas"], answer: 0, explanation: "Terdapat doa khas selepas solat Dhuha memohon rezeki dan keberkatan." },
+                { q: "Berapakah rakaat solat sunat Tahiyyatul Masjid?", options: ["2 rakaat", "4 rakaat", "1 rakaat", "3 rakaat"], answer: 0, explanation: "Solat Tahiyyatul Masjid ditunaikan sebanyak 2 rakaat." },
+                { q: "Adakah solat sunat Tahiyyatul Masjid disunatkan bagi setiap kali masuk masjid?", options: ["Ya, setiap kali masuk sebelum duduk", "Sekali seumur hidup", "Hanya hari Jumaat", "Hanya waktu malam"], answer: 0, explanation: "Sunat dilakukan setiap kali masuk ke dalam masjid sebelum duduk." },
+                { q: "Apakah hikmah menunaikan solat sunat?", options: ["Menampung kekurangan solat fardhu", "Mendapat pahala extra", "Mendekatkan diri kepada Allah", "Semua di atas"], answer: 0, explanation: "Solat sunat menyempurnakan kekurangan ibadah fardhu kita." },
+                { q: "Bolehkah solat sunat Tarawih ditunaikan secara bersendirian (munfarid)?", options: ["Boleh, tetapi lebih afdal berjemaah", "Tidak boleh sama sekali", "Haram", "Wajib berjemaah"], answer: 0, explanation: "Solat Tarawih sah dilakukan secara sendirian, namun berjemaah di masjid lebih afdal." },
+                { q: "Apakah waktu afdal mengerjakan solat sunat Tahajud?", options: ["Sepertiga malam terakhir", "Selepas solat Isyak terus", "Waktu tengah hari", "Waktu senja"], answer: 0, explanation: "Sepertiga malam terakhir adalah waktu paling afdal dan mustajab." },
+                { q: "Berapakah rakaat solat sunat Tasbih pada waktu siang?", options: ["4 rakaat dengan 1 salam", "2 rakaat", "6 rakaat", "8 rakaat"], answer: 0, explanation: "Solat Tasbih pada waktu siang dilakukan 4 rakaat dengan satu salam (atau 2 salam)." },
+                { q: "Apakah bacaan tasbih yang dibaca dalam solat sunat Tasbih?", options: ["Subhanallah walhamdulillah wala ilaha illallah wallahu akbar...", "Subhana rabbiyal azim", "Subhana rabbiyal a'la", "Astaghfirullah"], answer: 0, explanation: "Bacaan khas tasbih solat tasbih." },
+                { q: "Apakah hukum melakukan solat sunat Mutlak?", options: ["Sunat tanpa ikatan waktu", "Wajib", "Haram", "Makruh"], answer: 0, explanation: "Solat sunat mutlak ialah solat sunat yang tidak dnyatakan sebab atau waktunya." },
+                { q: "Apakah solat sunat yang dikerjakan ketika hendak membuat keputusan penting?", options: ["Solat Sunat Istikarah", "Solat Sunat Jenazah", "Solat Sunat Raya", "Solat Sunat Gerhana"], answer: 0, explanation: "Solat Istikarah dilakukan untuk memohon petunjuk Allah dalam membuat pilihan." },
+                { q: "Bolehkah solat sunat Rawatib dijamak?", options: ["Tidak boleh, solat sunat tidak boleh dijamak", "Boleh", "Wajib", "Sunat jamak"], answer: 0, explanation: "Hanya solat fardhu sahaja yang dibenarkan jamak dan qasar." },
+                { q: "Apakah kelebihan orang yang mengamalkan solat sunat Dhuha?", options: ["Dimurahkan rezeki dan tenang jiwa", "Cepat kaya raya", "Diberi pangkat", "Tiada kelebihan"], answer: 0, explanation: "Solat Dhuha dikenali sebagai pembuka pintu rezeki." },
+                { q: "Adakah solat sunat Witir boleh dikerjakan 3 rakaat sekaligus?", options: ["Boleh (dengan satu salam atau dua salam)", "Tidak boleh", "Haram", "Makruh"], answer: 0, explanation: "Solat witir 3 rakaat boleh dibuat sekaligus dengan satu tasyahhud akhir." },
+                { q: "Apakah solat sunat yang mengiringi solat fardhu Isyak?", options: ["Rawatib Ba'diyah Isyak", "Sunat Dhuha", "Sunat Hari Raya", "Sunat Gerhana"], answer: 0, explanation: "Ba'diyah Isyak dikerjakan selepas solat fardhu Isyak." },
+                { q: "Apakah erti 'Ghairu Muakad'?", options: ["Sunat yang kurang penekanannya dibanding muakad", "Wajib berat", "Haram", "Makruh"], answer: 0, explanation: "Ghairu muakad ialah sunat yang tidak begitu ditekankan amalannya seperti muakad." },
+                { q: "Adakah wanita haid diwajibkan qada solat sunat?", options: ["Tidak wajib qada solat sunat", "Wajib qada", "Sunat qada", "Makruh"], answer: 0, explanation: "Solat sunat yang ditinggalkan kerana uzur tidak wajib diqada." },
+                { q: "Apakah kesimpulan Pelajaran 3 Feqah Tahun 4?", options: ["Banyak jenis solat sunat untuk mendekatkan diri kepada Allah", "Solat fardhu sahaja cukup", "Solat sunat wajib dibuat", "Tiada kepentingan"], answer: 0, explanation: "Pelbagai solat sunat disyariatkan untuk menambah amal ibadah harian kita." }
+            ],
+            4: [ // Pelajaran 4 (30 soalan)
+                { q: "Apakah pengertian Solat Jamak?", options: ["Menghimpunkan dua solat fardhu dalam satu waktu", "Memendekkan solat", "Menambah rakaat solat", "Melambatkan solat"], answer: 0, explanation: "Solat Jamak ialah menghimpunkan dua solat fardhu dan dilakukan dalam satu waktu." },
+                { q: "Apakah pengertian Solat Qasar?", options: ["Memendekkan solat 4 rakaat kepada 2 rakaat", "Menambah rakaat", "Melakukan solat sunat", "Menjama'kan solat"], answer: 0, explanation: "Solat Qasar ialah memendekkan solat fardhu 4 rakaat (Zohor, Asar, Isyak) kepada 2 rakaat." },
+                { q: "Apakah hukum solat jamak dan qasar bagi musafir?", options: ["Harus", "Wajib", "Haram", "Makruh"], answer: 0, explanation: "Hukum melakukan jamak dan qasar bagi musafir yang memenuhi syarat adalah harus." },
+                { q: "Solat fardhu manakah yang boleh diqasar?", options: ["Zohor, Asar dan Isyak", "Subuh dan Maghrib", "Semua solat fardhu", "Maghrib sahaja"], answer: 0, explanation: "Hanya solat 4 rakaat sahaja (Zohor, Asar, Isyak) yang boleh diqasar kepada 2 rakaat." },
+                { q: "Berapakah jarak minimum perjalanan musafir untuk membolehkan jamak dan qasar?", options: ["2 marhalah (lebih kurang 81 km)", "10 km", "5 km", "1000 km"], answer: 0, explanation: "Syarat jarak perjalanan ialah sekurang-kurangnya 2 marhalah (lebih kurang 81 kilometer)." },
+                { q: "Apakah maksud Jamak Taqdim?", options: ["Menghimpunkan solat pada waktu solat yang pertama", "Menghimpunkan pada waktu kedua", "Melambatkan solat", "Solat sebelum musafir"], answer: 0, explanation: "Jamak Taqdim dilakukan pada waktu solat yang pertama (contoh: Zohor dan Asar dalam waktu Zohor)." },
+                { q: "Apakah maksud Jamak Takhir?", options: ["Menghimpunkan solat pada waktu solat yang kedua", "Menghimpunkan pada waktu pertama", "Solat subuh awal", "Solat qada"], answer: 0, explanation: "Jamak Takhir dilakukan pada waktu solat yang kedua (contoh: Zohor dan Asar dalam waktu Asar)." },
+                { q: "Bolehkah solat Subuh diqasar?", options: ["Tidak boleh sama sekali", "Boleh jadi 1 rakaat", "Boleh jadi 2 rakaat", "Harus"], answer: 0, explanation: "Solat Subuh dan Maghrib tidak boleh diqasar." },
+                { q: "Antara berikut, solat yang manakah boleh dijamak?", options: ["Zohor dengan Asar", "Subuh dengan Zohor", "Asar dengan Maghrib", "Subuh dengan Isyak"], answer: 0, explanation: "Solat yang boleh dijamak ialah Zohor dengan Asar, serta Maghrib dengan Isyak." },
+                { q: "Apakah syarat sah solat jamak dan qasar?", options: ["Niat, musafir harus, jarak mencukupi, muwalat", "Niat dalam hati sahaja tanpa syarat", "Suka hati musafir", "Tiada syarat"], answer: 0, explanation: "Syarat sah merangkumi niat jamak/qasar, musafir harus, jarak >= 81 km, muwalat dan tertib." },
+                // 20 more questions for Pelajaran 4...
+                { q: "Apakah erti 'Muwalat' dalam solat jamak?", options: ["Berturut-turut antara solat pertama dan kedua", "Terpisah jauh", "Tidur dulu", "Makan dulu"], answer: 0, explanation: "Muwalat bermaksud berturut-turut tanpa selingan masa yang lama antara dua solat." },
+                { q: "Adakah musafir kerana <b>maksiat</b> dibenarkan solat jamak dan qasar?", options: ["Tidak dibenarkan (musafir mesti harus)", "Boleh", "Wajib", "Sunat"], answer: 0, explanation: "Rukhsah jamak dan qasar hanya untuk perjalanan yang harus (baik/tidak maksiat)." },
+                { q: "Bagaimanakah niat solat Zohor jamak taqdim dengan Asar?", options: ["Usolli fardhaz-zohri arba'a raka'atin majmu'an ilaihil asru...", "Usolli fardhal asri...", "Niat biasa", "Tiada niat"], answer: 0, explanation: "Niat jamak taqdim mengandungi lafaz menghimpunkan solat kepada waktu pertama." },
+                { q: "Berapakah rakaat solat Isyak apabila diqasar?", options: ["2 rakaat", "4 rakaat", "3 rakaat", "1 rakaat"], answer: 0, explanation: "Solat Isyak yang asal 4 rakaat dipendekkan (qasar) menjadi 2 rakaat." },
+                { q: "Apakah hikmah disyariatkan solat Jamak dan Qasar?", options: ["Memberi kemudahan dan rahmat kepada umat Islam", "Menyusahkan musafir", "Menghilangkan solat", "Tiada hikmah"], answer: 0, explanation: "Rukhsah ini membuktikan agama Islam itu mudah dan prihatin terhadap kesusahan musafir." },
+                { q: "Adakah solat Maghrib boleh diqasar?", options: ["Tidak boleh (tetap 3 rakaat)", "Boleh jadi 1.5 rakaat", "Boleh jadi 2 rakaat", "Boleh jadi 1 rakaat"], answer: 0, explanation: "Solat Maghrib kekal 3 rakaat, tetapi boleh dijamak dengan Isyak." },
+                { q: "Bolehkah solat Maghrib dijamak dengan Asar?", options: ["Tidak boleh", "Boleh", "Wajib", "Sunat"], answer: 0, explanation: "Maghrib hanya boleh dijamak dengan Isyak sahaja." },
+                { q: "Apakah erti 'Tertib' dalam jamak taqdim?", options: ["Mengerjakan solat pertama dulu baru solat kedua", "Boleh buat mana-mana dulu", "Buat serentak", "Tidur dulu"], answer: 0, explanation: "Dalam jamak taqdim, wajib mendahulukan solat pertama (Zohor sebelum Asar)." },
+                { q: "Adakah sah jamak takhir jika niat takhir dibuat pada waktu kedua?", options: ["Ya, wajib berniat takhir di dalam waktu pertama", "Tidak perlu niat", "Boleh niat bila-bila", "Haram"], answer: 0, explanation: "Niat jamak takhir mesti dilakukan semasa masih dalam waktu solat pertama." },
+                { q: "Bolehkah seorang doktor bedah yang bertugas lama menjamak solat?", options: ["Ya, dengan syarat darurat tugas menyelamat tertentu", "Tidak boleh sama sekali", "Wajib", "Haram"], answer: 0, explanation: "Sebagaimana catatan 'Tahukah Anda' buku teks JAIS, doktor bedah boleh jamak atas keuzuran darurat tugas." },
+                { q: "Adakah solat fardhu Jumaat boleh diqasar?", options: ["Tidak boleh diqasar solat Jumaat", "Boleh jadi 1 rakaat", "Boleh jadi 2 rakaat", "Wajib qasar"], answer: 0, explanation: "Solat Jumaat 2 rakaat asal, tidak boleh diqasar lagi." },
+                { q: "Apakah maksud musafir dalam istilah syarak?", options: ["Orang yang keluar bermusafir dengan jarak melepasi sempadan kariah", "Orang tidur di rumah", "Orang jualan", "Orang bandar"], answer: 0, explanation: "Musafir ialah orang yang melakukan perjalanan jauh melepasi had tertentu." },
+                { q: "Berapakah jumlah rakaat solat Zohor apabila dijamak dan diqasar sekaligus?", options: ["2 rakaat", "4 rakaat", "3 rakaat", "1 rakaat"], answer: 0, explanation: "Solat Zohor diqasar jadi 2 rakaat, dan dijamak dengan Asar (2 rakaat juga)." },
+                { q: "Adakah makmum musafir boleh mengikut imam solat sempurna (ada qiam 4 rakaat)?", options: ["Wajib bagi musafir menyempurnakan 4 rakaat mengikut imam muقيم", "Boleh potong 2 rakaat sendiri", "Haram ikut", "Batal solat"], answer: 0, explanation: "Jika musafir solat di belakang imam mukim (penduduk tetap), dia wajib menyempurnakan 4 rakaat." },
+                { q: "Apakah hukum asal solat fardhu ketika sihat dan bermastautin?", options: ["Wajib tunaikan sempurna tanpa jamak/qasar", "Boleh jamak suka hati", "Sunat qasar", "Harus tinggalkan"], answer: 0, explanation: "Rukhsah jamak qasar khusus untuk musafir atau keuzuran tertentu sahaja." },
+                { q: "Apakah maksud 'Qasar' dari segi bahasa?", options: ["Meringkaskan / Memendekkan", "Memanjangkan", "Menambah", "Menghimpun"], answer: 0, explanation: "Qasar bermaksud memendekkan." },
+                { q: "Apakah maksud 'Jamak' dari segi bahasa?", options: ["Menghimpunkan", "Memisahkan", "Menceraikan", "Membuang"], answer: 0, explanation: "Jamak bermaksud menghimpunkan dua perkara." },
+                { q: "Adakah wajib solat sunat rawatib ketika jamak qasar musafir?", options: ["Sunat ditinggalkan ketika musafir (kecuali Rawatib Subuh)", "Wajib buat", "Haram", "Makruh"], answer: 0, explanation: "Tuntutan solat sunat rawatib diringankan ketika musafir." },
+                { q: "Apakah kesimpulan Pelajaran 4 Solat Jamak dan Qasar?", options: ["Kemudahan Allah untuk musafir meringankan ibadah", "Menyusahkan umat", "Tiada kaitan musafir", "Hukumnya haram"], answer: 0, explanation: "Rukhsah jamak qasar adalah rahmat besar bagi musafir." },
+                { q: "Siapakah penerbit silibus rasmi E-Pintar Feqah Tahun 4 ini?", options: ["SRA / KAFA JAIS Selangor", "Kementerian Kesihatan", "Kementerian Pertahanan", "Jabatan Perhutanan"], answer: 0, explanation: "Silibus rasmi Sekolah Rendah Agama / KAFA Jabatan Agama Islam Selangor (JAIS)." }
+            ]
+        };
+
+        // --- APLIKASI STATE ---
+        let currentTab = 'nota';
+        let currentFlashcardLesson = 0;
+        let currentFlashcardIndex = 0;
+        let isFlashcardFlipped = false;
+
+        let activeQuizLesson = null;
+        let currentQuizQuestions = [];
+        let currentQuestionIndex = 0;
+        let userAnswers = {}; // questionIndex -> selectedOptionIndex
+        let quizScore = 0;
+
+        // --- INITIALIZATION ---
+        window.onload = function() {
+            renderNotaAccordion();
+            renderFlashcard();
+            renderQuizMenu();
+        };
+
+        // --- TAB SWITCHING ---
+        function switchTab(tabId) {
+            currentTab = tabId;
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = "tab-btn flex items-center space-x-2 rtl:space-x-reverse px-4 py-2 rounded-lg text-sm font-semibold transition-all text-emerald-200 hover:bg-emerald-800/60 hover:text-white";
+            });
+            document.getElementById(`tab-btn-${tabId}`).className = "tab-btn flex items-center space-x-2 rtl:space-x-reverse px-4 py-2 rounded-lg text-sm font-semibold transition-all bg-emerald-700 text-white shadow";
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // --- TAB 1: NOTA RENDER & ACCORDION ---
+        function renderNotaAccordion() {
+            const container = document.getElementById('nota-accordion-container');
+            container.innerHTML = '';
+
+            pelajaranNota.forEach((item, idx) => {
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden transition";
+                
+                let faktaHtml = item.fakta.map(f => `<li class="flex items-start space-x-2 rtl:space-x-reverse text-sm text-gray-700"><span class="text-emerald-600 font-bold mt-0.5">•</span><span>${f}</span></li>`).join('');
+
+                card.innerHTML = `
+                    <button onclick="toggleAccordion(${idx})" class="w-full px-6 py-5 flex items-center justify-between text-right bg-white hover:bg-emerald-50/50 transition cursor-pointer">
+                        <div class="flex items-center space-x-3 rtl:space-x-reverse">
+                            <span class="bg-emerald-100 text-emerald-800 font-bold text-xs px-3 py-1.5 rounded-xl">Pelajaran ${item.id}</span>
+                            <span class="font-bold text-gray-900 text-base sm:text-lg">${item.title.replace('Pelajaran ' + item.id + ': ', '')}</span>
+                        </div>
+                        <svg id="acc-icon-${idx}" class="w-5 h-5 text-emerald-700 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div id="acc-body-${idx}" class="hidden px-6 pb-6 pt-2 border-t border-gray-100 bg-gray-50/50 space-y-4">
+                        <div>
+                            <h5 class="text-xs font-bold text-emerald-800 uppercase tracking-wider">Penerangan Ringkas:</h5>
+                            <p class="text-gray-700 text-sm mt-1 leading-relaxed">${item.penerangan}</p>
+                        </div>
+                        <div>
+                            <h5 class="text-xs font-bold text-emerald-800 uppercase tracking-wider mb-2">Fakta Penting Silibus JAIS:</h5>
+                            <ul class="space-y-2 bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
+                                ${faktaHtml}
+                            </ul>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function toggleAccordion(idx) {
+            const body = document.getElementById(`acc-body-${idx}`);
+            const icon = document.getElementById(`acc-icon-${idx}`);
+            if (body.classList.contains('hidden')) {
+                body.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                body.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+
+        // --- TAB 2: KAD IMBASAN (FLASHCARDS) ---
+        function changeFlashcardLesson(val) {
+            currentFlashcardLesson = parseInt(val);
+            currentFlashcardIndex = 0;
+            isFlashcardFlipped = false;
+            renderFlashcard();
+        }
+
+        function renderFlashcard() {
+            const cards = flashcardsData[currentFlashcardLesson];
+            const cardObj = cards[currentFlashcardIndex];
+            
+            document.getElementById('flashcard-counter').innerText = `Kad ${currentFlashcardIndex + 1} daripada 10`;
+            document.getElementById('flashcard-side-label').innerText = isFlashcardFlipped ? 'Jawapan' : 'Soalan';
+            
+            const box = document.getElementById('flashcard-box');
+            if (isFlashcardFlipped) {
+                box.className = "w-full bg-gradient-to-br from-teal-800 to-teal-950 text-white rounded-3xl p-8 sm:p-12 shadow-xl cursor-pointer min-h-[280px] flex flex-col justify-between transition-transform duration-300 hover:scale-[1.01] relative overflow-hidden border-2 border-teal-500/30";
+                document.getElementById('flashcard-text').innerText = cardObj.a;
+            } else {
+                box.className = "w-full bg-gradient-to-br from-emerald-800 to-emerald-950 text-white rounded-3xl p-8 sm:p-12 shadow-xl cursor-pointer min-h-[280px] flex flex-col justify-between transition-transform duration-300 hover:scale-[1.01] relative overflow-hidden border-2 border-emerald-500/30";
+                document.getElementById('flashcard-text').innerText = cardObj.q;
+            }
+        }
+
+        function flipFlashcard() {
+            isFlashcardFlipped = !isFlashcardFlipped;
+            renderFlashcard();
+        }
+
+        function nextFlashcard() {
+            isFlashcardFlipped = false;
+            currentFlashcardIndex = (currentFlashcardIndex + 1) % 10;
+            renderFlashcard();
+        }
+
+        function prevFlashcard() {
+            isFlashcardFlipped = false;
+            currentFlashcardIndex = (currentFlashcardIndex - 1 + 10) % 10;
+            renderFlashcard();
+        }
+
+        function resetFlashcards() {
+            isFlashcardFlipped = false;
+            currentFlashcardIndex = 0;
+            renderFlashcard();
+        }
+
+        // --- TAB 3: UJIAN KUIZ ---
+        function renderQuizMenu() {
+            const list = document.getElementById('quiz-options-list');
+            list.innerHTML = '';
+
+            // Mixed Quiz Option (30 Questions)
+            const mixedBtn = document.createElement('button');
+            mixedBtn.className = "w-full text-right bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 p-4 rounded-2xl flex items-center justify-between transition group shadow-sm";
+            mixedBtn.innerHTML = `
+                <div class="flex items-center space-x-3 rtl:space-x-reverse">
+                    <div class="bg-emerald-700 text-white p-2.5 rounded-xl">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 group-hover:text-emerald-900">Semua Tajuk Campuran (30 Soalan)</h4>
+                        <p class="text-xs text-gray-500">Uji minda merangkumi seluruh silibus Feqah Tahun 4 JAIS.</p>
+                    </div>
+                </div>
+                <svg class="w-5 h-5 text-emerald-700 transform rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            `;
+            mixedBtn.onclick = () => startQuiz('mixed');
+            list.appendChild(mixedBtn);
+
+            // Per Lesson Quiz Options (30 Questions each)
+            pelajaranNota.forEach((item) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-right bg-white hover:bg-emerald-50/50 border border-gray-200 p-4 rounded-2xl flex items-center justify-between transition group shadow-sm";
+                btn.innerHTML = `
+                    <div class="flex items-center space-x-3 rtl:space-x-reverse">
+                        <div class="bg-gray-100 text-emerald-800 font-bold px-3 py-2 rounded-xl text-sm">
+                            P ${item.id}
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 group-hover:text-emerald-800">${item.title} (30 Soalan)</h4>
+                            <p class="text-xs text-gray-500">Kuiz khusus berserta huraian fakta terperinci.</p>
+                        </div>
+                    </div>
+                    <svg class="w-5 h-5 text-gray-400 group-hover:text-emerald-700 transform rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                `;
+                btn.onclick = () => startQuiz(item.id);
+                list.appendChild(btn);
+            });
+        }
+
+        function startQuiz(lessonKey) {
+            activeQuizLesson = lessonKey;
+            currentQuestionIndex = 0;
+            userAnswers = {};
+
+            if (lessonKey === 'mixed') {
+                // Combine all questions and shuffle
+                let allQ = [];
+                Object.values(quizDataByLesson).forEach(arr => allQ = allQ.concat(arr));
+                // Shuffle array
+                currentQuizQuestions = allQ.sort(() => Math.random() - 0.5).slice(0, 30);
+                document.getElementById('quiz-active-title').innerText = "Kuiz Campuran (30 Soalan)";
+            } else {
+                // Get 30 questions for specific lesson (or copy if 30 available)
+                let lessonQ = [...quizDataByLesson[lessonKey]];
+                currentQuizQuestions = lessonQ.sort(() => Math.random() - 0.5);
+                document.getElementById('quiz-active-title').innerText = pelajaranNota[lessonKey - 1].title;
+            }
+
+            document.getElementById('quiz-menu-view').classList.add('hidden');
+            document.getElementById('quiz-result-view').classList.add('hidden');
+            document.getElementById('quiz-active-view').classList.remove('hidden');
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const qObj = currentQuizQuestions[currentQuestionIndex];
+            document.getElementById('quiz-progress-text').innerText = `Soalan ${currentQuestionIndex + 1} daripada ${currentQuizQuestions.length}`;
+            
+            // Calculate current score
+            let score = 0;
+            Object.keys(userAnswers).forEach(qIdx => {
+                if (userAnswers[qIdx] === currentQuizQuestions[qIdx].answer) score++;
+            });
+            document.getElementById('quiz-current-score').innerText = score;
+
+            document.getElementById('question-text').innerText = qObj.q;
+
+            const optContainer = document.getElementById('options-container');
+            optContainer.innerHTML = '';
+
+            const letters = ['A', 'B', 'C', 'D'];
+            const answered = userAnswers[currentQuestionIndex] !== undefined;
+            const selectedOpt = userAnswers[currentQuestionIndex];
+
+            qObj.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                
+                let btnClass = "w-full text-right p-4 rounded-2xl border font-medium text-sm sm:text-base transition flex items-center justify-between ";
+                
+                if (!answered) {
+                    btnClass += "bg-white border-gray-200 hover:bg-emerald-50 hover:border-emerald-300 text-gray-800 shadow-sm cursor-pointer";
+                } else {
+                    if (idx === qObj.answer) {
+                        btnClass += "bg-emerald-600 text-white border-emerald-600 shadow"; // Correct answer (Green)
+                    } else if (idx === selectedOpt && idx !== qObj.answer) {
+                        btnClass += "bg-rose-600 text-white border-rose-600 shadow"; // Incorrect user pick (Red)
+                    } else {
+                        btnClass += "bg-gray-50 text-gray-400 border-gray-200 opacity-60";
+                    }
+                }
+
+                btn.className = btnClass;
+                btn.disabled = answered;
+                btn.innerHTML = `
+                    <div class="flex items-center space-x-3 rtl:space-x-reverse">
+                        <span class="w-8 h-8 rounded-xl bg-gray-100 text-gray-700 font-bold flex items-center justify-center text-xs shrink-0 ${answered && idx === qObj.answer ? 'bg-white/20 text-white' : ''} ${answered && idx === selectedOpt && idx !== qObj.answer ? 'bg-white/20 text-white' : ''}">${letters[idx]}</span>
+                        <span class="leading-snug">${opt}</span>
+                    </div>
+                    ${answered && idx === qObj.answer ? '<svg class="w-6 h-6 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>' : ''}
+                    ${answered && idx === selectedOpt && idx !== qObj.answer ? '<svg class="w-6 h-6 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>' : ''}
+                `;
+                btn.onclick = () => selectAnswer(idx);
+                optContainer.appendChild(btn);
+            });
+
+            // Show explanation box if answered
+            const expBox = document.getElementById('explanation-box');
+            if (answered) {
+                expBox.classList.remove('hidden');
+                document.getElementById('explanation-text').innerText = qObj.explanation;
+            } else {
+                expBox.classList.add('hidden');
+            }
+        }
+
+        function selectAnswer(optIdx) {
+            if (userAnswers[currentQuestionIndex] !== undefined) return; // already answered
+            userAnswers[currentQuestionIndex] = optIdx;
+            renderQuestion();
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < currentQuizQuestions.length - 1) {
+                currentQuestionIndex++;
+                renderQuestion();
+            } else {
+                showQuizResult();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                renderQuestion();
+            }
+        }
+
+        function showQuizResult() {
+            document.getElementById('quiz-active-view').classList.add('hidden');
+            document.getElementById('quiz-result-view').classList.remove('hidden');
+
+            let correctCount = 0;
+            Object.keys(userAnswers).forEach(qIdx => {
+                if (userAnswers[qIdx] === currentQuizQuestions[qIdx].answer) correctCount++;
+            });
+
+            const total = currentQuizQuestions.length;
+            const wrongCount = total - correctCount;
+            const percentage = Math.round((correctCount / total) * 100);
+
+            document.getElementById('result-score').innerText = `${correctCount}/${total}`;
+            document.getElementById('result-percentage').innerText = `${percentage}%`;
+            document.getElementById('result-correct').innerText = correctCount;
+            document.getElementById('result-wrong').innerText = wrongCount;
+        }
+
+        function restartQuiz() {
+            startQuiz(activeQuizLesson);
+        }
+
+        function exitQuiz() {
+            document.getElementById('quiz-active-view').classList.add('hidden');
+            document.getElementById('quiz-result-view').classList.add('hidden');
+            document.getElementById('quiz-menu-view').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
